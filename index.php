@@ -1,8 +1,8 @@
 <?php
 
-define('BASE_URL', '/');
-define('DB_USER', 'todolist');
-define('DB_PASS', 'chAngeMeN0w!');
+define('BASE_URL', '/comem-archidep-php-todo-exercise/');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'todolist');
 define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
@@ -37,7 +37,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if(is_numeric($id)) {
-        $updateQuery = ''; // IMPLEMENT ME
+        $updateQuery = 'UPDATE toso SET done = \''.$item['done'].'\' WHERE id = \''.$id.'\''; // IMPLEMENT ME
         if(!$db->query($updateQuery)) {
           die(print_r($db->errorInfo(), true));
         }
@@ -122,7 +122,7 @@ $items = $db->query($selectQuery);
       <div class='list-group mt-3'>
 
         <!-- Todo items -->
-        <?php foreach($items as $item): ?>
+        <?php foreach($items as $item): ?> 
           <div class='list-group-item d-flex justify-content-between align-items-center<?php if($item['done']): ?> list-group-item-success<?php else: ?> list-group-item-warning<?php endif;?>'>
 
             <div class='title'><?= $item['title'] ?></div>
